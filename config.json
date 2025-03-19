@@ -1,0 +1,13 @@
+{
+    "address": "http://192.168.178.136:8123",
+    "token": "",
+    "devices": {
+        "main": 
+            [
+                {"id": "light.deckenlampe_fernseher", "type": "light"},
+                {"id": "light.deckenlampe_kautsch", "type": "light"},
+                {"id": "switch.smart_swith_schalter_1", "type": "light"},
+                {"id": "switch.smarte_aussensteckdose_steckdose_1", "type": "switch"}
+            ]
+    }
+}
