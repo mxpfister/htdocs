@@ -100,11 +100,17 @@ a {
     width: 150px;
     border: 2px solid white;
     border-radius: 10px;
-    
+    margin: 10px 5px;
+    height: 154px;
+    vertical-align: top;
 }
 .device-box a {
     height: 100%;
     display: inline-block;
+    text-decoration: none;
+}
+.device-box svg {
+    margin: 10px 0 0;
 }
 .device-box svg > path {
             fill: white;
