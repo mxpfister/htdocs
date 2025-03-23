@@ -7,10 +7,10 @@ function loadConfig($configFile = './../config.json') {
 }
 
 function fetchAllDevices($config) {
-    $cache_file = './../cache/devices.json';
+    $cacheFile = './../cache/devices.json';
 
-    if (file_exists($cache_file) && (time() - filemtime($cache_file) < 10)) {
-        return json_decode(file_get_contents($cache_file), true);
+    if (file_exists($cacheFile) && (time() - filemtime($cacheFile) < 10)) {
+        return json_decode(file_get_contents($cacheFile), true);
     }
 
     $url = $config->address . "/api/states";
@@ -24,13 +24,16 @@ function fetchAllDevices($config) {
     ]);
 
     $response = curl_exec($ch);
-    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
 
-    if ($http_code === 200) {
+    if ($httpCode === 200) {
         $data = json_decode($response, true);
-        file_put_contents($cache_file, json_encode($data));
+        file_put_contents($cacheFile, json_encode($data));
         return $data;
+    }
+    if ($httpCode === 403) {
+        echo "Request forbidden. Please check the token or the ip_ban.yaml in the homeassistant dir.";
     }
 
     return [];
@@ -53,7 +56,7 @@ function sendCommandToDevice($config, $entity_id, $service) {
     ]);
 
     $response = curl_exec($ch);
-    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
     curl_close($ch);
 
     return ($http_code === 200) ? json_decode($response, true) : null;
@@ -75,7 +78,7 @@ function getIconFile($deviceType, $state) {
         return file_get_contents($icons[$deviceType][$state]);
     }
 
-    return '<svg width="48" height="48"><circle cx="24" cy="24" r="10" fill="red"/></svg>';
+    return file_get_contents('../icons/alert.html');
 }
 
 ?>
