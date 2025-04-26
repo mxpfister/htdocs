@@ -4,9 +4,14 @@
     "devices": {
         "main": 
             [
+                {"id": "weather.forecast_home", "type": "weather", "width": 4},
+                {"id": "binary_sensor.werkstatttur_tur", "type": "door", "width": 2},
+                {"id": "binary_sensor.hausture_sensor_tur", "type": "door", "width": 2},
+                {"id": "switch.smart_swith_schalter_1", "type": "light", "width": 4},
                 {"id": "light.deckenlampe_fernseher", "type": "light"},
                 {"id": "light.deckenlampe_kautsch", "type": "light"},
-                {"id": "switch.smart_swith_schalter_1", "type": "light"},
+                {"id": "switch.smarte_aussensteckdose_steckdose_1", "type": "switch"},
+                {"id": "switch.smarte_aussensteckdose_steckdose_1", "type": "switch"},
                 {"id": "switch.smarte_aussensteckdose_steckdose_1", "type": "switch"}
             ]
     }

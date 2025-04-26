@@ -19,7 +19,7 @@ foreach ($config->devices->main as $device):
     $serviceParam = $data['state'] == "off" ? 'on' : 'off';
 
 ?>
-<div class="device-box" id="<?= $device->id ?>">
+<div class="device-box <?= isset($device->width) ? 'col-' . $device->width : '' ?>" id="<?= $device->id ?>">
     <a href="<?= "javascript:stateChange('" . $device->id . "', 'turn_" . $serviceParam . "')" ?>">
         <?= getIconFile($deviceType, $data['state']) ?>
         <p><?= $data['attributes']['friendly_name'] ?></p>
