@@ -64,6 +64,10 @@ function sendCommandToDevice($config, $entity_id, $service) {
 
 function getIconFile($deviceType, $state) {
     $icons = [
+        'door' => [
+            'on' => '../icons/door-open.html',
+            'off' => '../icons/door-closed.html'
+        ],
         'light' => [
             'on' => '../icons/light-on.html',
             'off' => '../icons/light-off.html'
