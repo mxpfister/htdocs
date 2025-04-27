@@ -25,19 +25,34 @@ foreach ($config->devices->main as $device):
         <div class="weather-now">
             <div class="weather-icon"><?= getIconFile($deviceType, $data['state']) ?></div>
             <div class="weather-main">
-                <span class="weather-temp"><?=file_get_contents("../icons/weather/thermometerIcon.html")?> <?= round($data['attributes']['temperature']) ?>°C</span>
-                <span class="weather-humidity"><?=file_get_contents("../icons/weather/raindropIcon.html")?> <?= $data['attributes']['humidity'] ?>%</span>
-                <span class="weather-wind"><?=file_get_contents("../icons/weather/windpowerIcon.html")?> <?= round($data['attributes']['wind_speed']) ?> km/h <?= getWindDirection($data['attributes']['wind_bearing']) ?></span>
+                <?php if (isset($device->options->temperature) && $device->options->temperature === true): ?>
+                    <span class="weather-temp"><?=file_get_contents("../icons/weather/thermometerIcon.html")?> <?= round($data['attributes']['temperature']) ?>°C</span>
+                <?php endif; ?>
+
+                <?php if (isset($device->options->humidity) && $device->options->humidity === true): ?>
+                    <span class="weather-humidity"><?=file_get_contents("../icons/weather/raindropIcon.html")?> <?= $data['attributes']['humidity'] ?>%</span>
+                <?php endif; ?>
+
+                <?php if (isset($device->options->wind) && $device->options->wind === true): ?>
+                    <span class="weather-wind"><?=file_get_contents("../icons/weather/windpowerIcon.html")?> <?= round($data['attributes']['wind_speed']) ?> km/h <?= getWindDirection($data['attributes']['wind_bearing']) ?></span>
+                <?php endif; ?>
             </div>
         </div>
         <div class="weather-details">
-            <p>Cloud Cover: <?= round($data['attributes']['cloud_coverage']) ?>% |</p>
-            <p>UV Index: <?= round($data['attributes']['uv_index']) ?> |</p>
-            <p>Last Update: <?= date('H:i', strtotime($data['last_updated'])) ?> UTC</p>
+            <?php if (isset($device->options->cloudCoverage) && $device->options->cloudCoverage === true): ?>
+                <p>Cloud Cover: <?= round($data['attributes']['cloud_coverage']) ?>% </p>
+            <?php endif; ?>
+
+            <?php if (isset($device->options->UvIndex) && $device->options->UvIndex === true): ?>
+                <p>| UV Index: <?= round($data['attributes']['uv_index']) ?> </p>
+            <?php endif; ?>
+
+            <?php if (isset($device->options->lastUpdate) && $device->options->lastUpdate === true): ?>
+                <p>| Last Update: <?= date('H:i', strtotime($data['last_updated'])) ?> UTC</p>
+            <?php endif; ?>
         </div>
     </div>
 </div>
-
 
 <?php
     else:

@@ -4,7 +4,14 @@
     "devices": {
         "main": 
             [
-                {"id": "weather.forecast_home", "type": "weather", "width": 4},
+                {"id": "weather.forecast_home", "type": "weather", "width": 4, "options": {
+                    "temperature": true,
+                    "humidity": true,
+                    "wind": true,
+                    "cloudCoverage": true,
+                    "UvIndex": true,
+                    "lastUpdate": false
+                }},
                 {"id": "binary_sensor.werkstatttur_tur", "type": "door", "width": 2},
                 {"id": "binary_sensor.hausture_sensor_tur", "type": "door", "width": 2},
                 {"id": "switch.smart_swith_schalter_1", "type": "light", "width": 4},
