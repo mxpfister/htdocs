@@ -1,3 +1,8 @@
+<?php
+include 'helper.php';
+
+$config = loadConfig('./config.json');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,30 +32,38 @@
                         Main
                     </div>
                 </a>
-                <a onclick="startup(3)">
-                    <div class="main-menu-item" id="menu3">
-                        <?= file_get_contents('./icons/switches.html') ?>
-                        Switches
-                    </div>
-                </a>
-                <a onclick="startup(4)">
-                    <div class="main-menu-item" id="menu4">
-                        <?= file_get_contents('./icons/light-on.html') ?>
-                        Lights
-                    </div>
-                </a>
-                <a onclick="startup(5)">
-                    <div class="main-menu-item" id="menu5">
-                        <?= file_get_contents('./icons/automations-on.html') ?>
-                        Automations
-                    </div>
-                </a>
-                <a onclick="startup(6)">
-                    <div class="main-menu-item" id="menu6">
-                        <?= file_get_contents('./icons/play.html') ?>
-                        Players
-                    </div>
-                </a>
+                <?php if($config->devices->switches): ?>
+                    <a onclick="startup(3)">
+                        <div class="main-menu-item" id="menu3">
+                            <?= file_get_contents('./icons/switches.html') ?>
+                            Switches
+                        </div>
+                    </a>
+                <?php endif; ?>
+                <?php if($config->devices->lights): ?>
+                    <a onclick="startup(4)">
+                        <div class="main-menu-item" id="menu4">
+                            <?= file_get_contents('./icons/light-on.html') ?>
+                            Lights
+                        </div>
+                    </a>
+                <?php endif; ?>
+                <?php if($config->devices->automations): ?>
+                    <a onclick="startup(5)">
+                        <div class="main-menu-item" id="menu5">
+                            <?= file_get_contents('./icons/automations-on.html') ?>
+                            Automations
+                        </div>
+                    </a>
+                <?php endif; ?>
+                <?php if($config->devices->players): ?>
+                    <a onclick="startup(6)">
+                        <div class="main-menu-item" id="menu6">
+                            <?= file_get_contents('./icons/play.html') ?>
+                            Players
+                        </div>
+                    </a>
+                <?php endif; ?>
             </div>
             <div id="page-content"></div>
     </div>

@@ -20,6 +20,10 @@
                 {"id": "switch.smarte_aussensteckdose_steckdose_1", "type": "switch"},
                 {"id": "switch.smarte_aussensteckdose_steckdose_1", "type": "switch"},
                 {"id": "switch.smarte_aussensteckdose_steckdose_1", "type": "switch"}
-            ]
+            ],
+        "switches": true,
+        "lights": true,
+        "automations": true,
+        "players": true
     }
 }
