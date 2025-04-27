@@ -82,7 +82,19 @@ function getIconFile($deviceType, $state) {
         return file_get_contents($icons[$deviceType][$state]);
     }
 
+    if ($deviceType == "weather") {
+        $weatherType = str_replace("-", "", $state);
+        $iconPath = "../icons/weather/{$weatherType}Icon.html";
+        if (file_exists($iconPath))
+        return file_get_contents($iconPath);
+    }
+
+
     return file_get_contents('../icons/alert.html');
 }
 
+function getWindDirection($degree) {
+    $dirs = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+    return $dirs[round($degree / 45) % 8];
+}
 ?>
