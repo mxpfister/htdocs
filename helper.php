@@ -75,6 +75,10 @@ function getIconFile($deviceType, $state) {
         'switch' => [
             'on' => '../icons/switch-on.html',
             'off' => '../icons/switch-off.html'
+        ],
+        'automation' => [
+            'on' => '../icons/automations-on.html',
+            'off' => '../icons/automations-off.html'
         ]
     ];
 
